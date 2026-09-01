@@ -21,13 +21,19 @@
         <br /><br />
 
         <label asp-for="Location">Enter lost item location</label>
-        <input asp-for="Location" />
+
+        <input asp-for="Location" list="locations" placeholder="Choose or enter a location" />
+
+        <datalist id="locations">
+            <option value="Engineering Building"></option>
+            <option value="Library"></option>
+            <option value="Cafeteria"></option>
+            <option value="Main Gate"></option>
+            <option value="Student Affairs"></option>
+        </datalist>
+
         <span asp-validation-for="Location"></span>
 
-        <br /><br />
-
-        <label asp-for="IsAvailable">Enter lost item availability</label>
-        <input asp-for="IsAvailable" />
 
         <br /><br />
 
