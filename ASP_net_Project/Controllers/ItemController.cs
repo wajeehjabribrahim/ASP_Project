@@ -194,7 +194,9 @@ namespace ASP_net_Project.Controllers
 
             var items = _context.Items.Where(x => x.UserId == userId).ToList();
 
-            return View("Founds",items);
+            ViewBag.Users = _context.Users.ToList();
+
+            return View("Founds", items);
         }
 
     }
