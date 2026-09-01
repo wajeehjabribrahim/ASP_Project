@@ -1,0 +1,43 @@
+﻿@model Item
+
+<div class="edit-page">
+
+    <h2>Edit Found Item</h2>
+
+    <form asp-action="EditItem" method="post" class="edit-form">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label asp-for="Name">Item Name</label>
+            <input asp-for="Name" />
+        </div>
+
+        <br />
+
+        <div>
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" />
+        </div>
+
+        <br />
+
+        <div>
+            <label asp-for="Location">Location</label>
+            <input asp-for="Location" />
+        </div>
+
+        <br />
+
+        <div>
+            <label asp-for="IsAvailable">Availability</label>
+            <input asp-for="IsAvailable" />
+        </div>
+
+        <br />
+
+        <input type="submit" value="Save Changes" />
+
+    </form>
+
+</div>

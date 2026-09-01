@@ -1,0 +1,31 @@
+﻿@model User
+
+<div class="profile-page">
+
+    <h2>My Profile</h2>
+
+    <div class="profile-info">
+
+        <p>
+            <strong>Name:</strong> @Model.Name
+        </p>
+
+        <p>
+            <strong>Email:</strong> @Model.Email
+        </p>
+
+    </div>
+
+    <div class="profile-links">
+
+        <a asp-controller="Account" asp-action="Logout">
+            Logout
+        </a>
+
+        <a asp-controller="Account" asp-action="EditRegister">
+            Edit Register
+        </a>
+
+    </div>
+
+</div>

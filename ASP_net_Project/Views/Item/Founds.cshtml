@@ -1,0 +1,77 @@
+﻿@model List<Item>
+
+
+    
+
+<div class="lost-items-page">
+
+    <div class="lost-items-header">
+        <h1>All Lost Items</h1>
+        <p>Browse all reported lost items.</p>
+    </div>
+
+    <div class="items-grid">
+
+        @foreach (var item in Model)
+        {
+            
+                var user = ((List<User>)ViewBag.Users).FirstOrDefault(x => x.Id == item.UserId);
+            
+
+            <div class="item-card">
+
+                <div class="item-card-content">
+
+                    <h3>@item.Name</h3>
+
+                    <p class="item-description">
+                        Description: @item.Description
+
+                    </p>
+
+                    <div class="item-location">
+                        <strong>Location:</strong>
+                        @item.Location
+                    </div>
+
+                    <div>
+                        
+                        <a href="mailto:@user?.Email">Get in touch</a>
+                    </div>
+
+                    @if (item.IsAvailable)
+                    {
+                        <span class="status available">
+                            Available
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="status unavailable">
+                            Not Available
+                        </span>
+                    }
+
+                    @if (Context.Session.GetInt32("UserId") == 1 ||Context.Session.GetInt32("UserId") == item.UserId)
+                    {
+                        <a asp-controller="Item"
+                           asp-action="EditItem"
+                           asp-route-id="@item.Id">
+                            Edit
+                        </a>
+
+                        <a asp-controller="Item"
+                           asp-action="DeleteItem"
+                           asp-route-ItemId="@item.Id">
+                            Delete
+                        </a>
+                    }
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
