@@ -5,7 +5,7 @@ namespace ASP_net_Project.Controllers
 {
     public class ItemController : Controller
     {
-
+       
         private readonly LfmsContext _context;
 
 
@@ -70,6 +70,7 @@ namespace ASP_net_Project.Controllers
             }
 
             item.UserId = HttpContext.Session.GetInt32("UserId").Value;
+            item.IsAvailable = true;
 
             _context.Items.Add(item);
             _context.SaveChanges();
