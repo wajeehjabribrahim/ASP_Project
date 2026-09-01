@@ -1,0 +1,48 @@
+﻿@model Item
+
+<div class="add-page">
+
+    <h2>
+        Lost Item Add Page
+    </h2>
+
+    <form asp-action="Add" method="post" class="add-form">
+
+        <label asp-for="Name">Enter lost item name</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+
+        <br /><br />
+
+        <label asp-for="Description">Enter lost item description</label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+
+        <br /><br />
+
+        <label asp-for="Location">Enter lost item location</label>
+        <input asp-for="Location" />
+        <span asp-validation-for="Location"></span>
+
+        <br /><br />
+
+        <label asp-for="IsAvailable">Enter lost item availability</label>
+        <input asp-for="IsAvailable" />
+
+        <br /><br />
+
+        <input type="submit" value="Add Item" />
+
+    </form>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <p id="error-message-add">
+            @ViewBag.ErrorMessage
+            <a asp-controller="Account" asp-action="Login">Login</a>
+        </p>
+    }
+
+</div>
+
+

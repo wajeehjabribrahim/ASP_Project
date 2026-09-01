@@ -1,0 +1,76 @@
+﻿@model List<Item>
+
+
+
+<div class="hero">
+
+    <h1>Find What You Lost. Help Others Find Theirs.</h1>
+
+    <p>
+        A simple platform for reporting a found item and claiming lost items.
+    </p>
+
+    <form asp-action="SearchItems" method="post">
+
+        <input type="text"
+               name="search"
+               placeholder="Search for an item (name or location)..." />
+
+        <input type="submit" value="Search" />
+
+    </form>
+
+    <br />
+
+    <a asp-action="Add">Report Found Item</a>
+
+    <a asp-action="Founds">Browse Items</a>
+
+    <a asp-action="MyReports">My Reports</a>
+
+</div>
+
+
+<hr />
+
+
+<h2>Recent Items</h2>
+
+<div class="items-container">
+
+    @foreach (var item in Model)
+    {
+        var user = ((List<User>)ViewBag.Users)
+            .FirstOrDefault(x => x.Id == item.UserId);
+
+        <div class="item-card">
+
+            <h3>@item.Name</h3>
+
+            <p> Description: @item.Description</p>
+
+            <p>
+                Location: @item.Location
+            </p>
+
+            <div>
+                <a href="mailto:@user?.Email">Get in touch</a>
+            </div>
+
+            @if (item.IsAvailable)
+            {
+                <span class="status available">
+                    Available
+                </span>
+            }
+            else
+            {
+                <span class="status unavailable">
+                    Not Available
+                </span>
+            }
+
+        </div>
+    }
+
+</div>
